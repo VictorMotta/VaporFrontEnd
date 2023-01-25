@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Image, ImageWrapper } from "./HomePageCss";
+import { Image, ImageWrapper } from "./HomePageStyled";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import FooterMenu from "../../components/FooterMenu/FooterMenu";
 

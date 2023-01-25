@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { AiFillHome } from "react-icons/ai";
 import { HiShoppingCart, HiOutlineMenu } from "react-icons/hi";
-import { FooterContainer, IconsLinks } from "./Footercss";
+import { FooterContainer, IconsLinks } from "./FooterStyled";
 import { useLocation } from "react-router-dom";
 
 const FooterMenu = () => {
@@ -12,7 +12,6 @@ const FooterMenu = () => {
     <FooterContainer>
       <IconsLinks>
         <AiFillHome />
-        {location}
       </IconsLinks>
       <IconsLinks>
         <HiShoppingCart />

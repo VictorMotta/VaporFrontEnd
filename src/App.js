@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AuthContext, AuthProvider } from "./context/authContext";
 import { useContext } from "react";
 import HomePage from "./pages/HomePage/HomePage";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
 
 function App() {
   function Private({ children }) {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/carrinho" element={<HomePage />} />
           <Route path="/menu" element={<HomePage />} />
+          <Route path="/cadastro" element={<SignUpPage />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

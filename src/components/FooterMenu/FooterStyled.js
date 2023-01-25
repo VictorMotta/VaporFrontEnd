@@ -13,13 +13,14 @@ export const FooterContainer = styled.div`
 `;
 
 export const IconsLinks = styled.div`
-  width: 30%;
+  width: 28%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 30px;
   border-top: solid 3px;
-  border-color: red;
-  color: red;
+  border-color: ${(props) =>
+    props.path === props.name ? "#1A9FFE" : "transparent"};
+  color: ${(props) => (props.path === props.name ? "#1A9FFE" : "#949599")};
 `;

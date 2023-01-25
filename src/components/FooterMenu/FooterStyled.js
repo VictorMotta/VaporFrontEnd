@@ -13,6 +13,10 @@ export const FooterContainer = styled.div`
 `;
 
 export const IconsLinks = styled.div`
+  a {
+    text-decoration: none;
+    color: ${(props) => (props.path === props.name ? "#1A9FFE" : "#949599")};
+  }
   width: 28%;
   height: 100%;
   display: flex;
@@ -22,5 +26,4 @@ export const IconsLinks = styled.div`
   border-top: solid 3px;
   border-color: ${(props) =>
     props.path === props.name ? "#1A9FFE" : "transparent"};
-  color: ${(props) => (props.path === props.name ? "#1A9FFE" : "#949599")};
 `;

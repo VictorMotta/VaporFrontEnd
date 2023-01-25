@@ -24,6 +24,8 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/carrinho" element={<HomePage />} />
+          <Route path="/menu" element={<HomePage />} />
           <Route path="/cadastro" element={<SignUpPage />} />
         </Routes>
       </AuthProvider>

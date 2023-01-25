@@ -7,16 +7,16 @@ import { FooterContainer, IconsLinks } from "./FooterStyled";
 import { useLocation } from "react-router-dom";
 
 const FooterMenu = () => {
-  const location = useLocation().pathname;
+  const location = useLocation().pathname.replace("/", "");
   return (
     <FooterContainer>
-      <IconsLinks>
+      <IconsLinks path={location} name={""}>
         <AiFillHome />
       </IconsLinks>
-      <IconsLinks>
+      <IconsLinks path={location} name={"carrinho"}>
         <HiShoppingCart />
       </IconsLinks>
-      <IconsLinks>
+      <IconsLinks path={location} name={"menu"}>
         <HiOutlineMenu />
       </IconsLinks>
     </FooterContainer>

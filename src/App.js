@@ -13,7 +13,7 @@ function App() {
     }
 
     if (!authenticated) {
-      return <Navigate to="/" />;
+      return <Navigate to='/' />;
     }
 
     return children;
@@ -23,10 +23,10 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/carrinho" element={<HomePage />} />
-          <Route path="/menu" element={<HomePage />} />
-          <Route path="/cadastro" element={<SignUpPage />} />
+          <Route path='/' element={<HomePage />} />
+          <Route path='/carrinho' element={<HomePage />} />
+          <Route path='/menu' element={<HomePage />} />
+          <Route path='/cadastro' element={<SignUpPage />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

@@ -54,6 +54,11 @@ export const Button = styled.button`
   color: #dfe3e6;
   background-color: #1d2e3e;
   cursor: pointer;
+  transition: 0.5s;
+  :hover {
+    color: #1d2e3e;
+    background-color: #dfe3e6;
+  }
 `;
 
 export const LinkStyled = styled(Link)`

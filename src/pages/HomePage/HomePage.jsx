@@ -49,7 +49,7 @@ const HomePage = () => {
         <Slider {...settings}>
           {images.map((image, index) => (
             <div key={index}>
-              <Image className='slider-image' src={image.src} alt={image.alt} />
+              <Image className="slider-image" src={image.src} alt={image.alt} />
             </div>
           ))}
         </Slider>

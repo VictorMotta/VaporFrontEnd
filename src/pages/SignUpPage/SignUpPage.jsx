@@ -8,7 +8,8 @@ import {
 } from "./SignUpPageStyled";
 import logo from "../../assets/images/Logo.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import apiAuth from "../../services/apiAuth";
 
 export default function SignUpPage() {
   const [form, setForm] = useState({
@@ -18,14 +19,24 @@ export default function SignUpPage() {
     password: "",
     confirmPassword: "",
   });
+  const navigate = useNavigate();
 
   function submitForm(event) {
     event.preventDefault();
 
     if (form.password !== form.confirmPassword) {
-      alert("Passwords do not match");
+      alert("As senhas não conferem!");
       return;
     }
+
+    apiAuth.singUp(form).then((response) => {
+      if (response.status === 201) {
+        alert("Cadastro realizado com sucesso!");
+        navigate("/login");
+      } else {
+        alert("Erro ao cadastrar!");
+      }
+    });
   }
 
   function editForm(e) {

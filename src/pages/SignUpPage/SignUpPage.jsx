@@ -1,8 +1,9 @@
-import { Button, FormStyled, Input, LinkStyled, Logo, SingUpDiv } from "./SignUpPageStyled";
+import { Button, FormStyled, Input, LinkStyled, Logo, SignUpDiv } from "./SignUpPageStyled";
 import logo from "../../assets/images/Logo.png";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import apiAuth from "../../services/apiAuth";
+import FooterMenu from "../../components/FooterMenu/FooterMenu";
 
 export default function SignUpPage() {
   const [form, setForm] = useState({
@@ -37,7 +38,7 @@ export default function SignUpPage() {
   }
 
   return (
-    <SingUpDiv>
+    <SignUpDiv>
       <Logo src={logo} alt='logo' />
       <FormStyled onSubmit={submitForm}>
         <Input
@@ -82,8 +83,9 @@ export default function SignUpPage() {
         />
         <Button onClick={submitForm}>Cadastrar</Button>
       </FormStyled>
+      <FooterMenu />
 
       <LinkStyled to='/login'>Já tem uma conta? Entre agora</LinkStyled>
-    </SingUpDiv>
+    </SignUpDiv>
   );
 }

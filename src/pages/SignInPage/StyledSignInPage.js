@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const SignUpDiv = styled.div`
+export const SignInDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -24,20 +24,19 @@ export const AuthProvider = ({ children }) => {
 
   const login = (data) => {
     const loggedUser = data;
+    const token = data.token;
     delete loggedUser.token;
 
     localStorage.setItem("user", JSON.stringify(loggedUser));
-    localStorage.setItem("tokenUser", JSON.stringify(data.token));
+    localStorage.setItem("tokenUser", JSON.stringify(token));
 
     setUser(loggedUser);
-    setToken(data.token);
+    setToken(token);
     navigate("/");
   };
 
   return (
-    <AuthContext.Provider
-      value={{ authenticated: !!user, user, token, login, loading }}
-    >
+    <AuthContext.Provider value={{ authenticated: !!user, user, token, login, loading }}>
       {children}
     </AuthContext.Provider>
   );

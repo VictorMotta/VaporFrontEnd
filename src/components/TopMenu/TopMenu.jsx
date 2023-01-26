@@ -12,8 +12,15 @@ const TopMenu = () => {
   const { user, authenticated } = useContext(AuthContext);
   const [search, setSearch] = useState("");
   return (
-    <TopUserContainer logo={logo}>
-      <input type="text" placeholder={"a"} />
+    <TopUserContainer search={search}>
+      <input
+        type="text"
+        placeholder={"a"}
+        value={search}
+        onChange={(e) => {
+          setSearch(e.target.value);
+        }}
+      />
       <TopUserImage>
         {authenticated ? (
           <img src={user.avatar} alt="user" />

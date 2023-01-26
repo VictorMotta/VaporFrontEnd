@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import logo from "../../assets/images/Logo.png";
-import svgIcon from "../../assets/images/icon.svg";
-import { CiSearch } from "react-icons/ci";
+import svgIcon from "../../assets/images/download.svg";
 
 export const TopUserImage = styled.div`
   font-size: 40px;
@@ -15,11 +14,11 @@ export const TopUserContainer = styled.div`
   input {
     background: #292c33;
     border-radius: 7px;
-    width: 70%;
+    width: 83%;
     height: 34px;
-    border-style: none;
+    border: none;
     padding-left: 8px;
-    background-image: url(${svgIcon});
+    background-image: url(${(props) => (props.search ? "none" : svgIcon)});
     background-repeat: no-repeat;
     background-position: right;
     background-size: 1.9em;

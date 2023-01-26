@@ -4,9 +4,12 @@ import svgIcon from "../../assets/images/download.svg";
 
 export const TopUserImage = styled.div`
   font-size: 40px;
+  color: #949599;
   img {
+    width: 40px;
     height: 40px;
     border-radius: 50%;
+    object-fit: cover;
   }
 `;
 
@@ -17,6 +20,8 @@ export const TopUserContainer = styled.div`
     width: 83%;
     height: 34px;
     border: none;
+    font-weight: 700;
+    color: #949599;
     padding-left: 8px;
     background-image: url(${(props) => (props.search ? "none" : svgIcon)});
     background-repeat: no-repeat;

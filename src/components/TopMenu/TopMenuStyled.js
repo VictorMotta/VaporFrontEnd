@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import logo from "../../assets/images/Logo.png";
+import svgIcon from "../../assets/images/icon.svg";
+import { CiSearch } from "react-icons/ci";
 
 export const TopUserImage = styled.div`
   font-size: 40px;
@@ -16,7 +19,18 @@ export const TopUserContainer = styled.div`
     height: 34px;
     border-style: none;
     padding-left: 8px;
+    background-image: url(${svgIcon});
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 1.9em;
   }
+  input::placeholder {
+    content: url(${logo});
+    display: flex;
+    height: 30px;
+    justify-content: center;
+  }
+
   display: flex;
   align-items: center;
   justify-content: space-between;

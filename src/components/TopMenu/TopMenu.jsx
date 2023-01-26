@@ -2,21 +2,18 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { FaUserCircle } from "react-icons/fa";
 import { TopUserImage, TopUserContainer } from "./TopMenuStyled";
+import logo from "../../assets/images/Logo.png";
+import { CiSearch } from "react-icons/ci";
+import svgIcon from "../../assets/images/icon.svg";
+
+const icon = <CiSearch />;
 
 const TopMenu = () => {
-  const { setUser, user, authenticated } = useContext(AuthContext);
-
-  // useEffect(() => {
-  //   setUser({
-  //     avatar:
-  //       "https://images.vexels.com/media/users/3/160888/isolated/preview/bc02981b8349e795c78a3dadfdb1770b-ilustracao-de-copo-de-leite.png",
-  //   });
-  // }, []);
-
+  const { user, authenticated } = useContext(AuthContext);
   const [search, setSearch] = useState("");
   return (
-    <TopUserContainer>
-      <input type="text" />
+    <TopUserContainer logo={logo}>
+      <input type="text" placeholder={"a"} />
       <TopUserImage>
         {authenticated ? (
           <img src={user.avatar} alt="user" />

@@ -3,6 +3,7 @@ import { AuthContext, AuthProvider } from "./context/authContext";
 import { useContext } from "react";
 import HomePage from "./pages/HomePage/HomePage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
+import SignInPage from "./pages/SignInPage/SignInPage";
 
 function App() {
   function Private({ children }) {
@@ -27,6 +28,7 @@ function App() {
           <Route path='/carrinho' element={<HomePage />} />
           <Route path='/menu' element={<HomePage />} />
           <Route path='/cadastro' element={<SignUpPage />} />
+          <Route path='/login' element={<SignInPage />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

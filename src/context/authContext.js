@@ -5,8 +5,8 @@ import { useEffect } from "react";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState();
-  const [token, setToken] = useState();
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
@@ -36,7 +36,14 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ authenticated: !!user, user, token, login, loading }}
+      value={{
+        authenticated: !!user,
+        user,
+        token,
+        login,
+        loading,
+        setUser,
+      }}
     >
       {children}
     </AuthContext.Provider>

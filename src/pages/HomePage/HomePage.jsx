@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Image, ImageWrapper } from "./HomePageStyled";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import FooterMenu from "../../components/FooterMenu/FooterMenu";
+import { AuthContext } from "../../context/authContext";
 
 const images = [
   {

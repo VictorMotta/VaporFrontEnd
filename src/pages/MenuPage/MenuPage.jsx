@@ -6,7 +6,7 @@ import { HiShoppingCart } from "react-icons/hi";
 import { TiHome } from "react-icons/ti";
 import { BsFillPersonFill } from "react-icons/bs";
 import { MdGroup } from "react-icons/md";
-import { ImDropbox } from "react-icons/im";
+import { ImDropbox, ImExit } from "react-icons/im";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,9 @@ import { useNavigate } from "react-router-dom";
 const MenuPage = () => {
   const { authenticated, user } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const signOut = () => {};
+
   return (
     <>
       <TopMenu>
@@ -25,23 +28,6 @@ const MenuPage = () => {
         </StyledTopoMenu>
       </TopMenu>
       <StyledMainContainer>
-        {!authenticated && (
-          <>
-            <StyledButtonMenu to='/login'>
-              <span>
-                <BsFillPersonFill />
-              </span>
-              <h1>Logar</h1>
-            </StyledButtonMenu>
-            <StyledButtonMenu to='/cadastrar'>
-              <span>
-                <MdGroup />
-              </span>
-              <h1>Cadastrar</h1>
-            </StyledButtonMenu>
-          </>
-        )}
-
         <StyledButtonMenu to='/'>
           <span>
             <TiHome />
@@ -63,6 +49,32 @@ const MenuPage = () => {
               <h1>Cadastrar Produtos</h1>
             </StyledButtonMenu>
           ))}
+
+        {!authenticated ? (
+          <>
+            <StyledButtonMenu to='/login'>
+              <span>
+                <BsFillPersonFill />
+              </span>
+              <h1>Logar</h1>
+            </StyledButtonMenu>
+            <StyledButtonMenu to='/cadastrar'>
+              <span>
+                <MdGroup />
+              </span>
+              <h1>Cadastrar</h1>
+            </StyledButtonMenu>
+          </>
+        ) : (
+          <>
+            <StyledButtonMenu to='/' onClick={signOut}>
+              <span>
+                <ImExit />
+              </span>
+              <h1>Sair</h1>
+            </StyledButtonMenu>
+          </>
+        )}
       </StyledMainContainer>
       <FooterMenu />
     </>

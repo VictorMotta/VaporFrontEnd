@@ -14,6 +14,17 @@ export const TopUserImage = styled.div`
 `;
 
 export const TopUserContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5%;
+  padding-right: 5%;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 76px;
+  background: #202126;
+  box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.5);
   input {
     background: #292c33;
     border-radius: 7px;
@@ -34,13 +45,4 @@ export const TopUserContainer = styled.div`
     height: 30px;
     justify-content: center;
   }
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 5%;
-  padding-right: 5%;
-  height: 76px;
-  background: #202126;
-  box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.5);
 `;

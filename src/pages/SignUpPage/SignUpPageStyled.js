@@ -39,7 +39,6 @@ export const Input = styled.input`
   background-color: #949599;
   ::placeholder {
     color: #202126;
-    font-family: "Roboto", sans-serif;
     font-weight: 400;
   }
 `;
@@ -50,7 +49,7 @@ export const Button = styled.button`
   border: none;
   border-radius: 5px;
   margin-top: 10px;
-  font-size: 24px;
+  font-size: 29px;
   font-weight: 400;
   color: #dfe3e6;
   background-color: #1d2e3e;
@@ -63,7 +62,6 @@ export const Button = styled.button`
 `;
 
 export const LinkStyled = styled(Link)`
-  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 15px;

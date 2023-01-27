@@ -30,14 +30,20 @@ export default function SignUpPage() {
       return;
     }
 
-    apiAuth.singUp(form).then((response) => {
-      if (response.status === 201) {
-        alert("Cadastro realizado com sucesso!");
-        navigate("/login");
-      } else {
-        alert("Erro ao cadastrar!");
-      }
-    });
+    apiAuth
+      .singUp(form, {
+        headers: {
+          Typeuser: "user",
+        },
+      })
+      .then((response) => {
+        if (response.status === 201) {
+          alert("Cadastro realizado com sucesso!");
+          navigate("/login");
+        } else {
+          alert("Erro ao cadastrar!");
+        }
+      });
   }
 
   function editForm(e) {

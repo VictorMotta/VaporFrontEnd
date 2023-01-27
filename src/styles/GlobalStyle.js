@@ -45,6 +45,7 @@ table {
 	border-spacing: 0;
 }
 *{
+		font-family: "Roboto Condensed", sans-serif;
     box-sizing: border-box;
 }
 body{

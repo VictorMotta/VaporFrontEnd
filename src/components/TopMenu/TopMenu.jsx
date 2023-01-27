@@ -13,7 +13,11 @@ const TopMenu = ({ children }) => {
     <TopUserContainer>
       {children}
       <TopUserImage>
-        {authenticated ? <img src={user.avatar} alt='user' /> : <FaUserCircle />}
+        {authenticated ? (
+          <img src={user.avatar} alt="user" />
+        ) : (
+          <FaUserCircle />
+        )}
       </TopUserImage>
     </TopUserContainer>
   );

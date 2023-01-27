@@ -2,7 +2,7 @@ import { AiOutlineLeft } from "react-icons/ai";
 import FooterMenu from "../../components/FooterMenu/FooterMenu";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import { StyledButtonMenu, StyledMainContainer, StyledTopoMenu } from "./MenuPageStyled";
-import { MdShoppingCart } from "react-icons/md";
+import { HiShoppingCart } from "react-icons/hi";
 import { TiHome } from "react-icons/ti";
 import { BsFillPersonFill } from "react-icons/bs";
 import { MdGroup } from "react-icons/md";
@@ -48,7 +48,7 @@ const MenuPage = () => {
         </StyledButtonMenu>
         <StyledButtonMenu to='/carrinho'>
           <span>
-            <MdShoppingCart />
+            <HiShoppingCart />
           </span>
           <h1>Carrinho</h1>
         </StyledButtonMenu>

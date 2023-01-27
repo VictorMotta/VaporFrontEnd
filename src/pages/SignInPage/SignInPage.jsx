@@ -54,7 +54,7 @@ const SignInPage = () => {
       </FormStyled>
       <FooterMenu />
 
-      <LinkStyled to='/login'>Já tem uma conta? Entre agora</LinkStyled>
+      <LinkStyled to='/cadastrar'>Já tem uma conta? Entre agora</LinkStyled>
     </SignInDiv>
   );
 };

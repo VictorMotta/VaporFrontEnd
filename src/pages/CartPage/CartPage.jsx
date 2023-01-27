@@ -15,10 +15,12 @@ import { useContext, useState } from "react";
 import { CartContext } from "../../context/cartContext";
 import ProductCart from "../../components/ProductCart/ProductCart";
 import { useEffect } from "react";
+import { AuthContext } from "../../context/authContext";
 
 const CartPage = () => {
   const navigate = useNavigate();
   const { cart, setTotalCompra } = useContext(CartContext);
+  const { authenticated, setBackToCart } = useContext(AuthContext);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -34,6 +36,12 @@ const CartPage = () => {
 
   const checkout = () => {
     setTotalCompra(total);
+
+    if (!authenticated) {
+      alert("Conecte-se para comprar!");
+      setBackToCart(true);
+      return navigate("/login");
+    }
     navigate("/pagamento");
   };
 

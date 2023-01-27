@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [backToCart, setBackToCart] = useState(false);
 
   useEffect(() => {
     const recoveredUser = localStorage.getItem("user");
@@ -32,11 +33,17 @@ export const AuthProvider = ({ children }) => {
 
     setUser(loggedUser);
     setToken(token);
+    if (backToCart) {
+      navigate("/carrinho");
+      return setBackToCart(false);
+    }
     navigate("/");
   };
 
   return (
-    <AuthContext.Provider value={{ authenticated: !!user, user, token, login, loading }}>
+    <AuthContext.Provider
+      value={{ authenticated: !!user, user, token, login, loading, setBackToCart }}
+    >
       {children}
     </AuthContext.Provider>
   );

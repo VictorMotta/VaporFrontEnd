@@ -9,15 +9,17 @@ import { MdGroup } from "react-icons/md";
 import { ImDropbox } from "react-icons/im";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 const MenuPage = () => {
   const { authenticated, user } = useContext(AuthContext);
+  const navigate = useNavigate();
   return (
     <>
       <TopMenu>
         <StyledTopoMenu>
           <div>
-            <AiOutlineLeft />
+            <AiOutlineLeft onClick={() => navigate(-1)} />
           </div>
           <h1>Menu</h1>
         </StyledTopoMenu>

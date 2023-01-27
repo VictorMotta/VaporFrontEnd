@@ -17,6 +17,7 @@ export const StyledTopoMenu = styled.div`
   line-height: 28px;
   div {
     cursor: pointer;
+    font-size: 31px;
   }
   h1 {
     width: 100%;

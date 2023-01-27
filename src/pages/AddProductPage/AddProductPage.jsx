@@ -34,6 +34,14 @@ export default function AddProductPage() {
       .addProductVapor(newProduct)
       .then((response) => {
         alert("Produto cadastrado com sucesso!");
+        setForm({
+          title: "",
+          description: "",
+          category: "",
+          price: "",
+          promoPercentage: "",
+        });
+        setImages([""]);
         console.log(response);
       })
       .catch((error) => {
@@ -60,46 +68,46 @@ export default function AddProductPage() {
 
   return (
     <AddProductDiv>
-      <Logo src={logo} alt="logo" />
+      <Logo src={logo} alt='logo' />
       <FormStyled onSubmit={submitForm}>
         <Input
-          name="title"
+          name='title'
           value={form.title}
           required
-          type="text"
-          placeholder="Título"
+          type='text'
+          placeholder='Título'
           onChange={editForm}
         />
         <Input
-          name="description"
+          name='description'
           value={form.description}
           required
-          type="text"
-          placeholder="Descrição"
+          type='text'
+          placeholder='Descrição'
           onChange={editForm}
         />
         <Input
-          name="category"
+          name='category'
           value={form.category}
           required
-          type="text"
-          placeholder="Categoria"
+          type='text'
+          placeholder='Categoria'
           onChange={editForm}
         />
         <Input
-          name="price"
+          name='price'
           value={form.price}
           required
-          type="text"
-          placeholder="Preço"
+          type='text'
+          placeholder='Preço'
           onChange={editForm}
         />
         <Input
-          name="promoPercentage"
+          name='promoPercentage'
           value={form.promoPercentage}
           required
-          type="text"
-          placeholder="Porcentagem da promoção"
+          type='text'
+          placeholder='Porcentagem da promoção'
           onChange={editForm}
         />
         {images.map((image, index) => (
@@ -108,8 +116,8 @@ export default function AddProductPage() {
             name={`image-${index}`}
             value={image}
             required
-            type="text"
-            placeholder="Imagem"
+            type='text'
+            placeholder='Imagem'
             onChange={handleChangeImage}
           />
         ))}
@@ -117,7 +125,7 @@ export default function AddProductPage() {
           <PlusStyled />
           <h1>Imagem</h1>
         </AddImageButton>
-        <Button type="submit">Cadastrar</Button>
+        <Button type='submit'>Cadastrar</Button>
       </FormStyled>
       <FooterMenu />
     </AddProductDiv>

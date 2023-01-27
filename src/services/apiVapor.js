@@ -9,8 +9,8 @@ function createConfig(token) {
     },
   };
 }
-function addProductVapor(body) {
-  return axios.post(`${BASE_URL}/products`, body);
+function addProductVapor(body, token) {
+  return axios.post(`${BASE_URL}/products`, body, createConfig(token));
 }
 
 export const apiVapor = {

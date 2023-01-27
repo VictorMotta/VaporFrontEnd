@@ -7,9 +7,9 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [backToCart, setBackToCart] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const recoveredUser = localStorage.getItem("user");
@@ -40,9 +40,18 @@ export const AuthProvider = ({ children }) => {
     navigate("/");
   };
 
+  const logout = () => {
+    console.log("Você saiu!");
+    localStorage.removeItem("user");
+    localStorage.removeItem("tokenUser");
+    setUser(null);
+    setToken(null);
+    navigate("/");
+  };
+
   return (
     <AuthContext.Provider
-      value={{ authenticated: !!user, user, token, login, loading, setBackToCart }}
+      value={{ authenticated: !!user, user, token, login, loading, setBackToCart, logout }}
     >
       {children}
     </AuthContext.Provider>

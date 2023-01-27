@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import logo from "../../assets/images/Logo.png";
-import svgIcon from "../../assets/images/download.svg";
 
 export const TopUserImage = styled.div`
   font-size: 40px;
@@ -25,24 +23,4 @@ export const TopUserContainer = styled.div`
   height: 76px;
   background: #202126;
   box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.5);
-  input {
-    background: #292c33;
-    border-radius: 7px;
-    width: 83%;
-    height: 34px;
-    border: none;
-    font-weight: 700;
-    color: #949599;
-    padding-left: 8px;
-    background-image: url(${(props) => (props.search ? "none" : svgIcon)});
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: 1.9em;
-  }
-  input::placeholder {
-    content: url(${logo});
-    display: flex;
-    height: 30px;
-    justify-content: center;
-  }
 `;

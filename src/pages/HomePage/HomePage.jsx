@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Image, ImageWrapper } from "./HomePageStyled";
+import { Image, ImageWrapper, InputSearchHomePage } from "./HomePageStyled";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import FooterMenu from "../../components/FooterMenu/FooterMenu";
 import { AuthContext } from "../../context/authContext";
@@ -28,6 +28,7 @@ const images = [
 
 const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [search, setSearch] = useState("");
 
   const settings = {
     arrows: false,
@@ -44,12 +45,22 @@ const HomePage = () => {
 
   return (
     <>
-      <TopMenu />
+      <TopMenu>
+        <InputSearchHomePage
+          search={search}
+          type='text'
+          placeholder={"a"}
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+        />
+      </TopMenu>
       <ImageWrapper>
         <Slider {...settings}>
           {images.map((image, index) => (
             <div key={index}>
-              <Image className="slider-image" src={image.src} alt={image.alt} />
+              <Image className='slider-image' src={image.src} alt={image.alt} />
             </div>
           ))}
         </Slider>

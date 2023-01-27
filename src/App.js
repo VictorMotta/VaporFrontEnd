@@ -29,7 +29,7 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/carrinho' element={<HomePage />} />
           <Route path='/menu' element={<MenuPage />} />
-          <Route path='/cadastro' element={<SignUpPage />} />
+          <Route path='/cadastrar' element={<SignUpPage />} />
           <Route path='/login' element={<SignInPage />} />
           <Route path='/cadastro-produto' element={<AddProductPage />} />
         </Routes>

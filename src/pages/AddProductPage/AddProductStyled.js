@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 import styled from "styled-components";
 
 export const AddProductDiv = styled.div`
@@ -39,7 +40,6 @@ export const Input = styled.input`
   background-color: #949599;
   ::placeholder {
     color: #202126;
-    font-family: "Roboto", sans-serif;
     font-weight: 400;
   }
 `;
@@ -50,7 +50,7 @@ export const Button = styled.button`
   border: none;
   border-radius: 5px;
   margin-top: 10px;
-  font-size: 24px;
+  font-size: 29px;
   font-weight: 400;
   color: #dfe3e6;
   background-color: #1d2e3e;
@@ -62,8 +62,36 @@ export const Button = styled.button`
   }
 `;
 
+export const AddImageButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 58px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 29px;
+  font-weight: 400;
+  color: #dfe3e6;
+  background-color: #1d2e3e;
+  cursor: pointer;
+  transition: 0.5s;
+  :hover {
+    color: #1d2e3e;
+    background-color: #dfe3e6;
+  }
+  h1 {
+    margin-left: 5px;
+  }
+`;
+
+export const PlusStyled = styled(AiOutlinePlusCircle)`
+  font-size: 29px;
+  font-weight: 400;
+`;
+
 export const LinkStyled = styled(Link)`
-  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 15px;

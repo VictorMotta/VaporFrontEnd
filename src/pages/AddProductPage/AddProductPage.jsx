@@ -4,10 +4,13 @@ import {
   Input,
   Logo,
   AddProductDiv,
+  AddImageButton,
+  PlusStyled,
 } from "./AddProductStyled";
 import logo from "../../assets/images/Logo.png";
 import FooterMenu from "../../components/FooterMenu/FooterMenu";
 import { useState } from "react";
+import { apiVapor } from "../../services/apiVapor";
 
 export default function AddProductPage() {
   const [form, setForm] = useState({
@@ -21,6 +24,22 @@ export default function AddProductPage() {
 
   function submitForm(event) {
     event.preventDefault();
+
+    const newProduct = {
+      ...form,
+      images,
+    };
+
+    apiVapor
+      .addProductVapor(newProduct)
+      .then((response) => {
+        alert("Produto cadastrado com sucesso!");
+        console.log(response);
+      })
+      .catch((error) => {
+        alert("Erro ao cadastrar o produto!");
+        console.log(error);
+      });
   }
 
   function editForm(e) {
@@ -94,7 +113,10 @@ export default function AddProductPage() {
             onChange={handleChangeImage}
           />
         ))}
-        <Button onClick={addImageInput}>Adicionar imagem</Button>
+        <AddImageButton onClick={addImageInput}>
+          <PlusStyled />
+          <h1>Imagem</h1>
+        </AddImageButton>
         <Button type="submit">Cadastrar</Button>
       </FormStyled>
       <FooterMenu />

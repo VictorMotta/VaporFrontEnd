@@ -7,7 +7,11 @@ import AddProductPage from "./pages/AddProductPage/AddProductPage";
 import MenuPage from "./pages/MenuPage/MenuPage";
 import CartPage from "./pages/CartPage/CartPage";
 import { CartProvider } from "./context/cartContext";
-import { Private, PrivateAdmin } from "./components/Authenticated/Authenticated";
+import {
+  Private,
+  PrivateAdmin,
+} from "./components/Authenticated/Authenticated";
+import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 
 function App() {
   return (
@@ -15,13 +19,13 @@ function App() {
       <AuthProvider>
         <CartProvider>
           <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/carrinho' element={<CartPage />} />
-            <Route path='/menu' element={<MenuPage />} />
-            <Route path='/cadastrar' element={<SignUpPage />} />
-            <Route path='/login' element={<SignInPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/carrinho" element={<CartPage />} />
+            <Route path="/menu" element={<MenuPage />} />
+            <Route path="/cadastrar" element={<SignUpPage />} />
+            <Route path="/login" element={<SignInPage />} />
             <Route
-              path='/cadastro-produto'
+              path="/cadastro-produto"
               element={
                 <Private>
                   <PrivateAdmin>
@@ -31,10 +35,10 @@ function App() {
               }
             />
             <Route
-              path='/pagamento'
+              path="/pagamento"
               element={
                 <Private>
-                  <CartPage />
+                  <CheckoutPage />
                 </Private>
               }
             />

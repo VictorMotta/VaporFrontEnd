@@ -33,8 +33,6 @@ const PriceTag = ({ price, pricePromotion, promoPercentage }) => {
   promoPercentage = Number(promoPercentage);
   if (price) {
     price = price.replace(".", ",");
-    console.log(pricePromotion);
-    pricePromotion = `${pricePromotion}`;
     pricePromotion = pricePromotion.replace(".", ",");
   }
 

@@ -12,6 +12,7 @@ import {
   PrivateAdmin,
 } from "./components/Authenticated/Authenticated";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+import ProductPage from "./pages/ProductPage/ProductPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/menu" element={<MenuPage />} />
             <Route path="/cadastrar" element={<SignUpPage />} />
             <Route path="/login" element={<SignInPage />} />
+            <Route path="/produto/:id" element={<ProductPage />} />
             <Route
               path="/cadastro-produto"
               element={

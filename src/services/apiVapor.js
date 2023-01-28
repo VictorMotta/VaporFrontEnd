@@ -14,7 +14,7 @@ function addProductVapor(body, token) {
 }
 
 function finishOrder(body, token) {
-  return axios.post(`${BASE_URL}/orders`, body, createConfig(token));
+  return axios.post(`${BASE_URL}/checkout`, body, createConfig(token));
 }
 
 export const apiVapor = {

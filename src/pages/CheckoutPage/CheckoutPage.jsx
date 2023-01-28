@@ -29,11 +29,17 @@ export default function CheckoutPage() {
   const { cart, totalCompra } = useContext(CartContext);
   const { token } = useContext(AuthContext);
 
+  const products = cart.map((product) => {
+    return {
+      _id: product._id,
+    };
+  });
+
   function submitForm(e) {
     e.preventDefault();
     const body = {
       ...form,
-      products: cart,
+      products,
       total: totalCompra,
     };
 
@@ -45,6 +51,7 @@ export default function CheckoutPage() {
       })
       .catch((err) => {
         alert("Erro ao realizar a compra");
+        console.log(err.response.data);
       });
   }
 

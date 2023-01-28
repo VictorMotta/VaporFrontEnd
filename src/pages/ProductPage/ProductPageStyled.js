@@ -3,15 +3,11 @@ import styled from "styled-components";
 export const ContainerProduct = styled.div`
   display: column;
   position: relative;
-  padding-top: 76px;
+  padding-top: 93px;
   padding-bottom: 60px;
   background: #111a23;
   background: #111a23;
   height: 100vh;
-  img {
-    width: 349px;
-    height: 196px;
-  }
 `;
 export const ContainerDisc = styled.div`
   display: column;

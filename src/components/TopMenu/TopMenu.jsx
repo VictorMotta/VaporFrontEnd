@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/authContext";
 import { FaUserCircle } from "react-icons/fa";
 import { TopUserImage, TopUserContainer } from "./TopMenuStyled";
 import { CiSearch } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 const icon = <CiSearch />;
 
@@ -14,9 +15,13 @@ const TopMenu = ({ children }) => {
       {children}
       <TopUserImage>
         {authenticated ? (
-          <img src={user.avatar} alt="user" />
+          <Link to={"/menu"}>
+            <img src={user.avatar} alt="user" />
+          </Link>
         ) : (
-          <FaUserCircle />
+          <Link to={"/login"}>
+            <FaUserCircle />
+          </Link>
         )}
       </TopUserImage>
     </TopUserContainer>

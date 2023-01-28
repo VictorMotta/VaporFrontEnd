@@ -14,6 +14,8 @@ import TopMenu from "../../components/TopMenu/TopMenu";
 import { AiOutlineLeft } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/cartContext";
+import { AuthContext } from "../../context/authContext";
+import { apiVapor } from "../../services/apiVapor";
 
 export default function CheckoutPage() {
   const [form, setForm] = useState({
@@ -24,13 +26,26 @@ export default function CheckoutPage() {
     cpf: "",
   });
   const navigate = useNavigate();
-  const cart = useContext(CartContext);
-
-  const total = 150;
+  const { cart, totalCompra } = useContext(CartContext);
+  const { token } = useContext(AuthContext);
 
   function submitForm(e) {
     e.preventDefault();
-    console.log(cart);
+    const body = {
+      ...form,
+      products: cart,
+      total: totalCompra,
+    };
+
+    apiVapor
+      .finishOrder(body, token)
+      .then((res) => {
+        alert("Compra realizada com sucesso!");
+        navigate("/");
+      })
+      .catch((err) => {
+        alert("Erro ao realizar a compra");
+      });
   }
 
   function editForm(e) {
@@ -88,10 +103,10 @@ export default function CheckoutPage() {
             <StyledContainerTotalWriting>
               <StyledTotalWriting>Total:</StyledTotalWriting>
               <StyledTotalWriting>
-                R$ {total.toFixed(2).replace(".", ",")}
+                R$ {totalCompra.toFixed(2).replace(".", ",")}
               </StyledTotalWriting>
             </StyledContainerTotalWriting>
-            <StyledButtonPay>Finalizar Compra</StyledButtonPay>
+            <StyledButtonPay type="submit">Finalizar Compra</StyledButtonPay>
           </StyledTotalCheckoutDiv>
         </FormStyled>
         <FooterMenu />

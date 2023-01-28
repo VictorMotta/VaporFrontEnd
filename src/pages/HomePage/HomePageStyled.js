@@ -30,32 +30,29 @@ export const ImageWrapper = styled(Link)`
   height: 257px;
   display: flex;
   position: relative;
+
   div {
     padding-left: 5px;
     padding-right: 5px;
     margin-top: 7px;
-
     font-family: "Roboto Condensed";
     font-style: normal;
     font-weight: 500;
     font-size: 15px;
     line-height: 18px;
-    /* identical to box height */
     color: #ffffff;
     width: 100%;
   }
   h2 {
     padding-left: 5px;
     padding-right: 5px;
-
     height: 24px;
     width: calc(100%);
-    font-family: "Roboto Condensed";
     font-style: normal;
     font-weight: 300;
     font-size: 10px;
     line-height: 12px;
-    color: #ffffff;
+    color: #bbbbbb;
     word-wrap: normal;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -75,6 +72,7 @@ export const ImageWrapper = styled(Link)`
 export const Image = styled.img`
   width: 100%;
   height: 181px;
+  object-fit: cover;
 `;
 
 export const InputSearchHomePage = styled.input`
@@ -103,14 +101,15 @@ export const HomePageContainer = styled.div`
   padding-bottom: 60px;
   background-color: #15212f;
   height: auto;
-  h1 {
-    font-family: "Roboto Condensed";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    /* identical to box height */
-    margin-left: 2.5%;
-    color: #ffffff;
-  }
+`;
+
+export const StyledTitleOferta = styled.h1`
+  font-family: "Roboto Condensed";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  /* identical to box height */
+  margin-left: 2.5%;
+  color: #ffffff;
 `;

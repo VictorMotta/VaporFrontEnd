@@ -66,11 +66,11 @@ const HomePage = () => {
   useEffect(() => {
     loadFiveProducts();
     window.addEventListener("scroll", handleScroll);
-    axios
-      .get(`http://localhost:5000/products?offset=0&limit=0`, { promo: "true" })
-      .then(({ data }) => {
-        setPromoItens([...data].sort(() => Math.random() - 0.5).splice(0, 4));
-      });
+    axios.get(`http://localhost:5000/products?promo=true`).then(({ data }) => {
+      console.log(data);
+
+      setPromoItens([...data].sort(() => Math.random() - 0.5).splice(0, 4));
+    });
   }, []);
 
   const loadFiveProducts = () => {

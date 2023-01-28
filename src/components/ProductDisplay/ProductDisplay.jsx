@@ -1,5 +1,5 @@
 import React from "react";
-import { GameContainer } from "./ProductDisplayStyled";
+import { GameContainer, StyledImageAndTitle } from "./ProductDisplayStyled";
 import { Link } from "react-router-dom";
 
 const ProducDisplay = ({
@@ -14,11 +14,13 @@ const ProducDisplay = ({
   return (
     <GameContainer>
       <Link to={`/produto/${_id}`}>
-        <img src={images[0]} alt={title} />
-        <div>
-          <h1>{title}</h1>
-          <h3>{category}</h3>
-        </div>
+        <StyledImageAndTitle>
+          <img src={images[0]} alt={title} />
+          <div>
+            <h1>{title}</h1>
+            <h3>{category}</h3>
+          </div>
+        </StyledImageAndTitle>
         <PriceTag price={price} pricePromotion={pricePromotion} promoPercentage={promoPercentage} />
       </Link>
     </GameContainer>

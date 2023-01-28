@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,31 +8,13 @@ import {
   CarrouselWrapper,
   InputSearchHomePage,
   ImageWrapper,
+  StyledTitleOferta,
 } from "./HomePageStyled";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import FooterMenu from "../../components/FooterMenu/FooterMenu";
-import { AuthContext } from "../../context/authContext";
 import axios from "axios";
 import ProducDisplay from "../../components/ProductDisplay/ProductDisplay";
 import BannerPriceTag from "../../components/BannerPriceTag/BannerPriceTag";
-const images = [
-  {
-    src: "https://thumbs.dreamstime.com/b/paisagens-bonitas-do-mar-43239195.jpg",
-    alt: "alt da image",
-  },
-  {
-    src: "https://static.vecteezy.com/ti/fotos-gratis/p3/6671766-fantastica-lua-magica-luz-e-agua-barco-com-arvore-papel-de-parede-gratis-foto.jpg",
-    alt: "alt da image2",
-  },
-  {
-    src: "https://thumbs.dreamstime.com/b/paisagens-bonitas-do-mar-43239195.jpg",
-    alt: "alt da image",
-  },
-  {
-    src: "https://static.vecteezy.com/ti/fotos-gratis/p3/6671766-fantastica-lua-magica-luz-e-agua-barco-com-arvore-papel-de-parede-gratis-foto.jpg",
-    alt: "alt da image2",
-  },
-];
 
 const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -55,9 +37,7 @@ const HomePage = () => {
   };
   const handleScroll = (e) => {
     const scrollHeight = e.target.documentElement.scrollHeight;
-    const currentHeight = Math.ceil(
-      e.target.documentElement.scrollTop + window.innerHeight
-    );
+    const currentHeight = Math.ceil(e.target.documentElement.scrollTop + window.innerHeight);
     if (currentHeight + 1 >= scrollHeight) {
       loadFiveProducts();
     }
@@ -74,12 +54,10 @@ const HomePage = () => {
   }, []);
 
   const loadFiveProducts = () => {
-    axios
-      .get(`http://localhost:5000/products?offset=${currentOffset}&limit=5`)
-      .then(({ data }) => {
-        const tenProducts = data;
-        setProducts((products) => [...products, ...tenProducts]);
-      });
+    axios.get(`http://localhost:5000/products?offset=${currentOffset}&limit=5`).then(({ data }) => {
+      const tenProducts = data;
+      setProducts((products) => [...products, ...tenProducts]);
+    });
     currentOffset += 5;
   };
 
@@ -88,7 +66,7 @@ const HomePage = () => {
       <TopMenu>
         <InputSearchHomePage
           search={search}
-          type="text"
+          type='text'
           placeholder={"a"}
           value={search}
           onChange={(e) => {
@@ -101,11 +79,7 @@ const HomePage = () => {
           <Slider {...settings}>
             {promoItens.map((game, index) => (
               <ImageWrapper key={index} to={`/produto/${game._id}`}>
-                <Image
-                  className="slider-image"
-                  src={game.images[0]}
-                  alt={game.title}
-                />
+                <Image className='slider-image' src={game.images[0]} alt={game.title} />
                 <div>{game.title}</div>
                 <h2>{game.description}</h2>
                 <BannerPriceTag
@@ -117,20 +91,9 @@ const HomePage = () => {
             ))}
           </Slider>
         </CarrouselWrapper>
-        <h1>FEITO PARA VOCÊ</h1>
+        <StyledTitleOferta>FEITO PARA VOCÊ</StyledTitleOferta>
         {products.map(
-          (
-            {
-              title,
-              category,
-              price,
-              images,
-              promoPercentage,
-              pricePromotion,
-              _id,
-            },
-            index
-          ) => (
+          ({ title, category, price, images, promoPercentage, pricePromotion, _id }, index) => (
             <ProducDisplay
               title={title}
               category={category}

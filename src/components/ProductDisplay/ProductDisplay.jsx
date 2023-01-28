@@ -14,16 +14,12 @@ const ProducDisplay = ({
   return (
     <GameContainer>
       <Link to={`/produto/${_id}`}>
-        <img src={images} alt={title} />
+        <img src={images[0]} alt={title} />
         <div>
           <h1>{title}</h1>
           <h3>{category}</h3>
         </div>
-        <PriceTag
-          price={price}
-          pricePromotion={pricePromotion}
-          promoPercentage={promoPercentage}
-        />
+        <PriceTag price={price} pricePromotion={pricePromotion} promoPercentage={promoPercentage} />
       </Link>
     </GameContainer>
   );

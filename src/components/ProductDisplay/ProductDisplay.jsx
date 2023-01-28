@@ -31,11 +31,10 @@ const ProducDisplay = ({
 
 const PriceTag = ({ price, pricePromotion, promoPercentage }) => {
   promoPercentage = Number(promoPercentage);
-  promoPercentage = 1;
-  pricePromotion = "90.99";
-  price = "99.99";
   if (price) {
     price = price.replace(".", ",");
+    console.log(pricePromotion);
+    pricePromotion = `${pricePromotion}`;
     pricePromotion = pricePromotion.replace(".", ",");
   }
 

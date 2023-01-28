@@ -1,15 +1,19 @@
 import styled from "styled-components";
 import logo from "../../assets/images/Logo.png";
 import svgIcon from "../../assets/images/download.svg";
+import { Link } from "react-router-dom";
 
-export const ImageWrapper = styled.div`
-  width: 80%;
+export const CarrouselWrapper = styled.div`
+  width: 94.5%;
   margin: 0 auto;
-  text-align: center;
-  height: 700px;
   margin-bottom: 34px;
   .slick-dots {
-    width: 25%;
+    width: 100%;
+    li {
+      button::before {
+        font-size: 9px;
+      }
+    }
     button::hover {
     }
     .slick-active {
@@ -19,10 +23,58 @@ export const ImageWrapper = styled.div`
     }
   }
 `;
+export const ImageWrapper = styled(Link)`
+  text-decoration: none;
+  background: #0b141d;
+  width: 100%;
+  height: 257px;
+  display: flex;
+  position: relative;
+  div {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 7px;
+
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    /* identical to box height */
+    color: #ffffff;
+    width: 100%;
+  }
+  h2 {
+    padding-left: 5px;
+    padding-right: 5px;
+
+    height: 24px;
+    width: calc(100%);
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 12px;
+    color: #ffffff;
+    word-wrap: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  span {
+    position: absolute;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    right: 0;
+    bottom: 0;
+  }
+`;
 
 export const Image = styled.img`
   width: 100%;
-  height: 220px;
+  height: 181px;
 `;
 
 export const InputSearchHomePage = styled.input`
@@ -43,5 +95,22 @@ export const InputSearchHomePage = styled.input`
     display: flex;
     height: 30px;
     justify-content: center;
+  }
+`;
+
+export const HomePageContainer = styled.div`
+  padding-top: 89px;
+  padding-bottom: 60px;
+  background-color: #15212f;
+  height: auto;
+  h1 {
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+    margin-left: 2.5%;
+    color: #ffffff;
   }
 `;

@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import {
   StyledContainerProductCart,
   StyledImageGame,
@@ -10,13 +11,22 @@ import {
   StyledPriceGameNotPromotion,
 } from "./ProductCartStyled";
 import { IoMdTrash } from "react-icons/io";
+import { CartContext } from "../../context/cartContext";
 
-import { useNavigate } from "react-router-dom";
-
-const ProductCart = ({ item }) => {
+const ProductCart = ({ item, setTotal }) => {
   const { title, price, pricePromotion, images } = item;
+  const { cart, setCart } = useContext(CartContext);
 
-  const navigate = useNavigate();
+  const deleteProductCart = () => {
+    const newCart = cart.filter((product) => product !== item);
+    if (!pricePromotion) {
+      setTotal((novoValor) => novoValor - Number(price));
+    }
+    if (pricePromotion) {
+      setTotal((novoValor) => novoValor - Number(pricePromotion));
+    }
+    setCart(newCart);
+  };
 
   return (
     <>
@@ -37,7 +47,7 @@ const ProductCart = ({ item }) => {
             <StyledPriceCurrent>R$ {Number(price).toFixed(2).replace(".", ",")}</StyledPriceCurrent>
           </StyledPriceGameNotPromotion>
         )}
-        <StyledButtonDelete>
+        <StyledButtonDelete onClick={deleteProductCart}>
           <IoMdTrash />
         </StyledButtonDelete>
       </StyledContainerProductCart>

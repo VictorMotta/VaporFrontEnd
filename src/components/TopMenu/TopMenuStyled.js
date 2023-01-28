@@ -1,6 +1,11 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const TopUserImage = styled.div`
+  a {
+    text-decoration: none;
+    color: #949599;
+  }
   font-size: 40px;
   color: #949599;
   img {

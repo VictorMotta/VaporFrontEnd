@@ -10,12 +10,28 @@ import { ImDropbox, ImExit } from "react-icons/im";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
+import apiAuth from "../../services/apiAuth";
 
 const MenuPage = () => {
-  const { authenticated, user } = useContext(AuthContext);
+  const { authenticated, user, token, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const signOut = () => {};
+  const signOutButton = () => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    apiAuth
+      .signOut(config)
+      .then((res) => {
+        logout();
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        alert("Erro Interno ao tentar sair!");
+      });
+  };
 
   return (
     <>
@@ -67,7 +83,7 @@ const MenuPage = () => {
           </>
         ) : (
           <>
-            <StyledButtonMenu to='/' onClick={signOut}>
+            <StyledButtonMenu to='/' onClick={signOutButton}>
               <span>
                 <ImExit />
               </span>

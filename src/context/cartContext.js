@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const CartContext = createContext();
 
@@ -39,9 +40,26 @@ export const CartProvider = ({ children }) => {
     },
   ]);
   const [totalCompra, setTotalCompra] = useState(0);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const recoveredCart = localStorage.getItem("cartUser");
+
+    if (recoveredCart) {
+      setCart(JSON.parse(recoveredCart));
+    }
+  }, []);
+
+  const addToCart = (data) => {
+    localStorage.setItem("cartUser", JSON.stringify(data));
+
+    setCart(data);
+
+    navigate("/carrinho");
+  };
 
   return (
-    <CartContext.Provider value={{ cart, setCart, totalCompra, setTotalCompra }}>
+    <CartContext.Provider value={{ cart, setCart, totalCompra, setTotalCompra, addToCart }}>
       {children}
     </CartContext.Provider>
   );

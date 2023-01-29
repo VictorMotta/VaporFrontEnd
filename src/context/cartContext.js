@@ -29,6 +29,7 @@ export const CartProvider = ({ children }) => {
     if (isOnList) {
       recoveredCart = recoveredCart.filter((game) => game._id !== data._id);
       localStorage.setItem("cartUser", JSON.stringify(recoveredCart));
+      setCart(recoveredCart);
       return false;
     } else {
       recoveredCart.push(data);

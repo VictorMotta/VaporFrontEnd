@@ -26,25 +26,30 @@ const ProductCart = ({ item, setTotal }) => {
       setTotal((novoValor) => novoValor - Number(pricePromotion));
     }
     setCart(newCart);
+    localStorage.setItem("cartUser", JSON.stringify(newCart));
   };
 
   return (
     <>
       <StyledContainerProductCart>
         <StyledContainerImageAndTittle>
-          <StyledImageGame src={images[0]} alt='' />
+          <StyledImageGame src={images[0]} alt="" />
           <StyledTitleGame>{title}</StyledTitleGame>
         </StyledContainerImageAndTittle>
         {pricePromotion ? (
           <StyledPriceWithPromotionGame>
-            <StyledPriceOld>R$ {Number(price).toFixed(2).replace(".", ",")}</StyledPriceOld>
+            <StyledPriceOld>
+              R$ {Number(price).toFixed(2).replace(".", ",")}
+            </StyledPriceOld>
             <StyledPriceCurrent>
               R$ {Number(pricePromotion).toFixed(2).replace(".", ",")}
             </StyledPriceCurrent>
           </StyledPriceWithPromotionGame>
         ) : (
           <StyledPriceGameNotPromotion>
-            <StyledPriceCurrent>R$ {Number(price).toFixed(2).replace(".", ",")}</StyledPriceCurrent>
+            <StyledPriceCurrent>
+              R$ {Number(price).toFixed(2).replace(".", ",")}
+            </StyledPriceCurrent>
           </StyledPriceGameNotPromotion>
         )}
         <StyledButtonDelete onClick={deleteProductCart}>

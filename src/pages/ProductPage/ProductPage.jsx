@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ProductPriceTag from "../../components/ProductPriceTag/ProductPriceTag";
@@ -15,15 +15,18 @@ import ProductImageSlider from "../../components/ProductImageSlider/ProductImage
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { CartContext } from "../../context/cartContext";
 
 const ProductPage = () => {
+  const { cart, setCart, handleCart } = useContext(CartContext);
   const navigate = useNavigate();
   const { id } = useParams();
   const [product, setProduct] = useState(undefined);
+  const [isDefined, setIsDefined] = useState(false);
   useEffect(() => {
     axios.get(`http://localhost:5000/products/${id}`).then(({ data }) => {
       setProduct(data);
-      console.log(data);
+      setIsDefined(handleCart(data, true));
     });
   }, []);
   if (!product) {
@@ -42,7 +45,12 @@ const ProductPage = () => {
 
           <ContainerBuy>
             Comprar {product.title}
-            <ProductPriceTag />
+            <ProductPriceTag
+              isDefined={isDefined}
+              setIsDefined={setIsDefined}
+              handleCart={handleCart}
+              product={product}
+            />
           </ContainerBuy>
           <ContainerDisc>
             <h1>SOBRE ESSE JOGO</h1>

@@ -57,7 +57,9 @@ const CartPage = () => {
       </TopMenu>
       <StyledMainContainerCart cart={cart}>
         {cart.length === 0 ? (
-          <StyledTextCenterPage>Vá as compras depois retorne aqui! s2 </StyledTextCenterPage>
+          <StyledTextCenterPage>
+            Vá as compras depois retorne aqui! s2{" "}
+          </StyledTextCenterPage>
         ) : (
           <>
             {cart.map((item) => (
@@ -66,7 +68,9 @@ const CartPage = () => {
             <StyledTotalCartBuy>
               <StyledContainerTotalWriting>
                 <StyledTotalWriting>Total:</StyledTotalWriting>
-                <StyledTotalWriting>R$ {total.toFixed(2).replace(".", ",")}</StyledTotalWriting>
+                <StyledTotalWriting>
+                  R$ {total.toFixed(2).replace(".", ",")}
+                </StyledTotalWriting>
               </StyledContainerTotalWriting>
               <StyledButtonBuy onClick={checkout}>Comprar</StyledButtonBuy>
             </StyledTotalCartBuy>

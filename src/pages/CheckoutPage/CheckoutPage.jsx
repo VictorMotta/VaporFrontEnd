@@ -47,6 +47,7 @@ export default function CheckoutPage() {
       .finishOrder(body, token)
       .then((res) => {
         alert("Compra realizada com sucesso!");
+        localStorage.setItem("cartUser", JSON.stringify([]));
         navigate("/");
       })
       .catch((err) => {

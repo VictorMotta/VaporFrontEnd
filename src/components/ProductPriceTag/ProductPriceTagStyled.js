@@ -19,7 +19,7 @@ const ProductPriceTagStyled = styled.span`
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
-    background: linear-gradient(270deg, #588a1b 0%, #75b022 100%);
+    background: ${(props) => (props.isDefined ? "#464242" : "#75b022")};
     border-style: none;
     border-left: solid 2px black;
     color: #ffffff;

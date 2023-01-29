@@ -26,7 +26,7 @@ export default function CheckoutPage() {
     cpf: "",
   });
   const navigate = useNavigate();
-  const { cart, totalCompra } = useContext(CartContext);
+  const { cart, setCart, totalCompra } = useContext(CartContext);
   const { token } = useContext(AuthContext);
 
   const products = cart.map((product) => {
@@ -48,6 +48,7 @@ export default function CheckoutPage() {
       .then((res) => {
         alert("Compra realizada com sucesso!");
         localStorage.setItem("cartUser", JSON.stringify([]));
+        setCart([]);
         navigate("/");
       })
       .catch((err) => {

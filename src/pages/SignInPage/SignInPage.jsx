@@ -50,11 +50,11 @@ const SignInPage = () => {
           placeholder='Senha'
           onChange={editBody}
         />
-        <Button>Cadastrar</Button>
+        <Button>Entrar</Button>
       </FormStyled>
       <FooterMenu />
 
-      <LinkStyled to='/cadastrar'>Já tem uma conta? Entre agora</LinkStyled>
+      <LinkStyled to='/cadastrar'>Primeira vez? Cadastre-se!</LinkStyled>
     </SignInDiv>
   );
 };

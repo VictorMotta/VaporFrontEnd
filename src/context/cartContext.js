@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const CartContext = createContext();
 
@@ -12,7 +13,7 @@ export const CartProvider = ({ children }) => {
       category: "Ação e aventura",
       price: "299",
       pricePromotion: "119.6",
-      promoPercentage: "60",
+      promoPercentage: 60,
       images: [
         "https://t2.tudocdn.net/651770?w=646&h=284",
         "https://image.api.playstation.com/vulcan/img/rnd/202011/1217/x8YjNdl4czVYabtHAaFvIvEs.jpg",
@@ -28,7 +29,7 @@ export const CartProvider = ({ children }) => {
       category: "Ação e aventura",
       price: "199",
       pricePromotion: "",
-      promoPercentage: "0",
+      promoPercentage: 0,
       images: [
         "https://image.api.playstation.com/vulcan/ap/rnd/202212/0814/9uU0gBq02jmXHtDsm82AV722.jpg",
         "https://meups.com.br/wp-content/uploads/2022/12/The-Witcher-3_-Wild-Hunt-Complete-Edition_20221206231030-scaled.jpg",
@@ -39,9 +40,28 @@ export const CartProvider = ({ children }) => {
     },
   ]);
   const [totalCompra, setTotalCompra] = useState(0);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const recoveredCart = localStorage.getItem("cartUser");
+
+    if (recoveredCart) {
+      setCart(JSON.parse(recoveredCart));
+    }
+  }, []);
+
+  const addToCart = (data) => {
+    localStorage.setItem("cartUser", JSON.stringify(data));
+
+    setCart(data);
+
+    navigate("/carrinho");
+  };
 
   return (
-    <CartContext.Provider value={{ cart, setCart, totalCompra, setTotalCompra }}>
+    <CartContext.Provider
+      value={{ cart, setCart, totalCompra, setTotalCompra, addToCart }}
+    >
       {children}
     </CartContext.Provider>
   );

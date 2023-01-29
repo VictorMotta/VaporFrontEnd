@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,31 +8,13 @@ import {
   CarrouselWrapper,
   InputSearchHomePage,
   ImageWrapper,
+  StyledTitleOferta,
 } from "./HomePageStyled";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import FooterMenu from "../../components/FooterMenu/FooterMenu";
-import { AuthContext } from "../../context/authContext";
 import axios from "axios";
 import ProducDisplay from "../../components/ProductDisplay/ProductDisplay";
 import BannerPriceTag from "../../components/BannerPriceTag/BannerPriceTag";
-const images = [
-  {
-    src: "https://thumbs.dreamstime.com/b/paisagens-bonitas-do-mar-43239195.jpg",
-    alt: "alt da image",
-  },
-  {
-    src: "https://static.vecteezy.com/ti/fotos-gratis/p3/6671766-fantastica-lua-magica-luz-e-agua-barco-com-arvore-papel-de-parede-gratis-foto.jpg",
-    alt: "alt da image2",
-  },
-  {
-    src: "https://thumbs.dreamstime.com/b/paisagens-bonitas-do-mar-43239195.jpg",
-    alt: "alt da image",
-  },
-  {
-    src: "https://static.vecteezy.com/ti/fotos-gratis/p3/6671766-fantastica-lua-magica-luz-e-agua-barco-com-arvore-papel-de-parede-gratis-foto.jpg",
-    alt: "alt da image2",
-  },
-];
 
 const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -66,11 +48,11 @@ const HomePage = () => {
   useEffect(() => {
     loadFiveProducts();
     window.addEventListener("scroll", handleScroll);
-    axios
-      .get(`http://localhost:5000/products?offset=0&limit=0`, { promo: "true" })
-      .then(({ data }) => {
-        setPromoItens([...data].sort(() => Math.random() - 0.5).splice(0, 4));
-      });
+    axios.get(`http://localhost:5000/products?promo=true`).then(({ data }) => {
+      console.log(data);
+
+      setPromoItens([...data].sort(() => Math.random() - 0.5).splice(0, 4));
+    });
   }, []);
 
   const loadFiveProducts = () => {
@@ -117,7 +99,7 @@ const HomePage = () => {
             ))}
           </Slider>
         </CarrouselWrapper>
-        <h1>FEITO PARA VOCÊ</h1>
+        <StyledTitleOferta>FEITO PARA VOCÊ</StyledTitleOferta>
         {products.map(
           (
             {

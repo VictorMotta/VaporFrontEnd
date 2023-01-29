@@ -61,7 +61,7 @@ const CartPage = () => {
         ) : (
           <>
             {cart.map((item) => (
-              <ProductCart key={item._id} item={item} />
+              <ProductCart key={item._id} item={item} setTotal={setTotal} />
             ))}
             <StyledTotalCartBuy>
               <StyledContainerTotalWriting>

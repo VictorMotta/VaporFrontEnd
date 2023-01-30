@@ -52,8 +52,7 @@ export default function CheckoutPage() {
         navigate("/");
       })
       .catch((err) => {
-        alert("Erro ao realizar a compra");
-        console.log(err.response.data);
+        err.response.data.forEach((erro) => alert(erro));
       });
   }
 

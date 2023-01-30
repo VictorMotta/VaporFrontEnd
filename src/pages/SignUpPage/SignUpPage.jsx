@@ -1,11 +1,4 @@
-import {
-  Button,
-  FormStyled,
-  Input,
-  LinkStyled,
-  Logo,
-  SignUpDiv,
-} from "./SignUpPageStyled";
+import { Button, FormStyled, Input, LinkStyled, Logo, SignUpDiv } from "./SignUpPageStyled";
 import logo from "../../assets/images/Logo.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -43,7 +36,8 @@ export default function SignUpPage() {
         } else {
           alert("Erro ao cadastrar!");
         }
-      });
+      })
+      .catch((err) => err.response.data.forEach((erro) => alert(erro)));
   }
 
   function editForm(e) {
@@ -52,53 +46,53 @@ export default function SignUpPage() {
 
   return (
     <SignUpDiv>
-      <Logo src={logo} alt="logo" />
+      <Logo src={logo} alt='logo' />
       <FormStyled onSubmit={submitForm}>
         <Input
-          name="name"
+          name='name'
           value={form.name}
           required
-          type="text"
-          placeholder="Nome"
+          type='text'
+          placeholder='Nome'
           onChange={editForm}
         />
         <Input
-          name="email"
+          name='email'
           value={form.email}
           required
-          type="email"
-          placeholder="E-mail"
+          type='email'
+          placeholder='E-mail'
           onChange={editForm}
         />
         <Input
-          name="avatar"
+          name='avatar'
           value={form.avatar}
           required
-          type="url"
-          placeholder="Imagem de perfil (URL)"
+          type='url'
+          placeholder='Imagem de perfil (URL)'
           onChange={editForm}
         />
         <Input
-          name="password"
+          name='password'
           value={form.password}
           required
-          type="password"
-          placeholder="Senha"
+          type='password'
+          placeholder='Senha'
           onChange={editForm}
         />
         <Input
-          name="confirmPassword"
+          name='confirmPassword'
           value={form.confirmPassword}
           required
-          type="password"
-          placeholder="Confirme a senha"
+          type='password'
+          placeholder='Confirme a senha'
           onChange={editForm}
         />
         <Button onClick={submitForm}>Cadastrar</Button>
       </FormStyled>
       <FooterMenu />
 
-      <LinkStyled to="/login">Já tem uma conta? Entre agora</LinkStyled>
+      <LinkStyled to='/login'>Já tem uma conta? Entre agora</LinkStyled>
     </SignUpDiv>
   );
 }

@@ -74,48 +74,53 @@ export default function CheckoutPage() {
       <CheckoutDiv>
         <FormStyled onSubmit={submitForm}>
           <Input
-            type="text"
-            name="cardNumber"
-            placeholder="Número do cartão"
+            type='number'
+            name='cardNumber'
+            placeholder='Número do cartão'
             value={form.cardNumber}
             onChange={editForm}
+            required
           />
           <Input
-            type="text"
-            name="validDate"
-            placeholder="Data de validade"
+            type='text'
+            name='validDate'
+            placeholder='Data de validade'
             value={form.validDate}
             onChange={editForm}
+            required
           />
           <Input
-            type="text"
-            name="ccv"
-            placeholder="CCV"
+            type='number'
+            name='ccv'
+            minLength={3}
+            maxLength={3}
+            placeholder='CCV'
             value={form.ccv}
             onChange={editForm}
+            required
           />
           <Input
-            type="text"
-            name="cardName"
-            placeholder="Nome impresso no cartão"
+            type='text'
+            name='cardName'
+            placeholder='Nome impresso no cartão'
             value={form.cardName}
             onChange={editForm}
+            required
           />
           <Input
-            type="text"
-            name="cpf"
-            placeholder="CPF"
+            type='number'
+            name='cpf'
+            placeholder='CPF'
             value={form.cpf}
             onChange={editForm}
+            required
           />
           <StyledTotalCheckoutDiv>
             <StyledContainerTotalWriting>
               <StyledTotalWriting>Total:</StyledTotalWriting>
-              <StyledTotalWriting>
-                R$ {totalCompra.toFixed(2).replace(".", ",")}
-              </StyledTotalWriting>
+              <StyledTotalWriting>R$ {totalCompra.toFixed(2).replace(".", ",")}</StyledTotalWriting>
             </StyledContainerTotalWriting>
-            <StyledButtonPay type="submit">Finalizar Compra</StyledButtonPay>
+            <StyledButtonPay type='submit'>Finalizar Compra</StyledButtonPay>
           </StyledTotalCheckoutDiv>
         </FormStyled>
         <FooterMenu />

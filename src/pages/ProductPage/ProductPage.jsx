@@ -6,6 +6,7 @@ import {
   ContainerDisc,
   ContainerProduct,
   ContainerBuy,
+  StyledTopMenuInfo,
 } from "./ProductPageStyled";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import { AiOutlineLeft } from "react-icons/ai";
@@ -18,7 +19,7 @@ import "swiper/css/thumbs";
 import { CartContext } from "../../context/cartContext";
 
 const ProductPage = () => {
-  const { cart, setCart, handleCart } = useContext(CartContext);
+  const { handleCart } = useContext(CartContext);
   const navigate = useNavigate();
   const { id } = useParams();
   const [product, setProduct] = useState(undefined);
@@ -35,10 +36,12 @@ const ProductPage = () => {
     return (
       <>
         <TopMenu>
-          <div>
-            <AiOutlineLeft onClick={() => navigate(-1)} />
-          </div>
-          <h1>{product.title}</h1>
+          <StyledTopMenuInfo>
+            <div>
+              <AiOutlineLeft onClick={() => navigate(-1)} />
+            </div>
+            <h1>{product.title}</h1>
+          </StyledTopMenuInfo>
         </TopMenu>
         <ContainerProduct>
           <ProductImageSlider images={product.images} />

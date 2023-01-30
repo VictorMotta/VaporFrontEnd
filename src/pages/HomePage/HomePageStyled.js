@@ -100,7 +100,7 @@ export const HomePageContainer = styled.div`
   padding-top: 89px;
   padding-bottom: 60px;
   background-color: #15212f;
-  height: auto;
+  min-height: 100vh;
 `;
 
 export const StyledTitleOferta = styled.h1`

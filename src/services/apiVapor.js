@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const BASE_URL = "http://localhost:5000";
+import { BASE_URL } from "../constants/urls";
 
 function createConfig(token) {
   return {
@@ -17,7 +16,22 @@ function finishOrder(body, token) {
   return axios.post(`${BASE_URL}/checkout`, body, createConfig(token));
 }
 
+function getProduct(id) {
+  return axios.get(`${BASE_URL}/products/${id}`);
+}
+
+function getProductsPromo() {
+  return axios.get(`http://localhost:5000/products?promo=true`);
+}
+
+function getFiveProducts(currentOffset) {
+  return axios.get(`http://localhost:5000/products?offset=${currentOffset}&limit=5`);
+}
+
 export const apiVapor = {
   addProductVapor,
   finishOrder,
+  getProduct,
+  getProductsPromo,
+  getFiveProducts,
 };

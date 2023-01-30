@@ -12,9 +12,9 @@ import {
 } from "./HomePageStyled";
 import TopMenu from "../../components/TopMenu/TopMenu";
 import FooterMenu from "../../components/FooterMenu/FooterMenu";
-import axios from "axios";
 import ProducDisplay from "../../components/ProductDisplay/ProductDisplay";
 import BannerPriceTag from "../../components/BannerPriceTag/BannerPriceTag";
+import { apiVapor } from "../../services/apiVapor";
 
 const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -37,9 +37,7 @@ const HomePage = () => {
   };
   const handleScroll = (e) => {
     const scrollHeight = e.target.documentElement.scrollHeight;
-    const currentHeight = Math.ceil(
-      e.target.documentElement.scrollTop + window.innerHeight
-    );
+    const currentHeight = Math.ceil(e.target.documentElement.scrollTop + window.innerHeight);
     if (currentHeight + 1 >= scrollHeight) {
       loadFiveProducts();
     }
@@ -48,18 +46,16 @@ const HomePage = () => {
   useEffect(() => {
     loadFiveProducts();
     window.addEventListener("scroll", handleScroll);
-    axios.get(`http://localhost:5000/products?promo=true`).then(({ data }) => {
+    apiVapor.getProductsPromo().then(({ data }) => {
       setPromoItens([...data].sort(() => Math.random() - 0.5).splice(0, 4));
     });
   }, []);
 
   const loadFiveProducts = () => {
-    axios
-      .get(`http://localhost:5000/products?offset=${currentOffset}&limit=5`)
-      .then(({ data }) => {
-        const tenProducts = data;
-        setProducts((products) => [...products, ...tenProducts]);
-      });
+    apiVapor.getFiveProducts(currentOffset).then(({ data }) => {
+      const tenProducts = data;
+      setProducts((products) => [...products, ...tenProducts]);
+    });
     currentOffset += 5;
   };
 
@@ -68,7 +64,7 @@ const HomePage = () => {
       <TopMenu>
         <InputSearchHomePage
           search={search}
-          type="text"
+          type='text'
           placeholder={"a"}
           value={search}
           onChange={(e) => {
@@ -81,11 +77,7 @@ const HomePage = () => {
           <Slider {...settings}>
             {promoItens.map((game, index) => (
               <ImageWrapper key={index} to={`/produto/${game._id}`}>
-                <Image
-                  className="slider-image"
-                  src={game.images[0]}
-                  alt={game.title}
-                />
+                <Image className='slider-image' src={game.images[0]} alt={game.title} />
                 <div>{game.title}</div>
                 <h2>{game.description}</h2>
                 <BannerPriceTag
@@ -99,18 +91,7 @@ const HomePage = () => {
         </CarrouselWrapper>
         <StyledTitleOferta>FEITO PARA VOCÊ</StyledTitleOferta>
         {products.map(
-          (
-            {
-              title,
-              category,
-              price,
-              images,
-              promoPercentage,
-              pricePromotion,
-              _id,
-            },
-            index
-          ) => (
+          ({ title, category, price, images, promoPercentage, pricePromotion, _id }, index) => (
             <ProducDisplay
               title={title}
               category={category}

@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import ProductPriceTag from "../../components/ProductPriceTag/ProductPriceTag";
 import {
   ContainerDisc,
@@ -17,6 +16,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { CartContext } from "../../context/cartContext";
+import { apiVapor } from "../../services/apiVapor";
 
 const ProductPage = () => {
   const { handleCart } = useContext(CartContext);
@@ -25,7 +25,7 @@ const ProductPage = () => {
   const [product, setProduct] = useState(undefined);
   const [isDefined, setIsDefined] = useState(false);
   useEffect(() => {
-    axios.get(`http://localhost:5000/products/${id}`).then(({ data }) => {
+    apiVapor.getProduct(id).then(({ data }) => {
       setProduct(data);
       setIsDefined(handleCart(data, true));
     });

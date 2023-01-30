@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const BASE_URL = "http://localhost:5000";
+import { BASE_URL } from "../constants/urls";
 
 function singUp(body, config) {
   return axios.post(`${BASE_URL}/sign-up`, body, config);

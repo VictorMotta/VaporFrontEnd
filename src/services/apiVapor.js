@@ -21,11 +21,11 @@ function getProduct(id) {
 }
 
 function getProductsPromo() {
-  return axios.get(`http://localhost:5000/products?promo=true`);
+  return axios.get(`${BASE_URL}/products?promo=true`);
 }
 
 function getFiveProducts(currentOffset) {
-  return axios.get(`http://localhost:5000/products?offset=${currentOffset}&limit=5`);
+  return axios.get(`${BASE_URL}/products?offset=${currentOffset}&limit=5`);
 }
 
 export const apiVapor = {

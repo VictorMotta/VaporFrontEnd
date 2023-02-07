@@ -17,6 +17,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { CartContext } from "../../context/cartContext";
 import { apiVapor } from "../../services/apiVapor";
+import { InputSearchHomePage } from "../HomePage/HomePageStyled.js";
 
 const ProductPage = () => {
   const { handleCart } = useContext(CartContext);
@@ -24,45 +25,55 @@ const ProductPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(undefined);
   const [isDefined, setIsDefined] = useState(false);
+
   useEffect(() => {
     apiVapor.getProduct(id).then(({ data }) => {
       setProduct(data);
       setIsDefined(handleCart(data, true));
     });
   }, []);
-  if (!product) {
-    return <div>aaa</div>;
-  } else {
-    return (
-      <>
-        <TopMenu>
-          <StyledTopMenuInfo>
-            <div>
-              <AiOutlineLeft onClick={() => navigate(-1)} />
-            </div>
-            <h1>{product.title}</h1>
-          </StyledTopMenuInfo>
-        </TopMenu>
-        <ContainerProduct>
-          <ProductImageSlider images={product.images} />
 
-          <ContainerBuy>
-            Comprar {product.title}
-            <ProductPriceTag
-              isDefined={isDefined}
-              setIsDefined={setIsDefined}
-              handleCart={handleCart}
-              product={product}
-            />
-          </ContainerBuy>
-          <ContainerDisc>
-            <h1>SOBRE ESSE JOGO</h1>
-            <h2>{product.description}</h2>
-          </ContainerDisc>
-        </ContainerProduct>
-        <FooterMenu />
-      </>
-    );
-  }
+  return (
+    <>
+      {!product ? (
+        <>
+          <TopMenu>
+            <InputSearchHomePage type="text" placeholder={"a"} />
+          </TopMenu>
+          <ContainerProduct></ContainerProduct>
+        </>
+      ) : (
+        <>
+          <TopMenu>
+            <StyledTopMenuInfo>
+              <div>
+                <AiOutlineLeft onClick={() => navigate(-1)} />
+              </div>
+              <h1>{product.title}</h1>
+            </StyledTopMenuInfo>
+          </TopMenu>
+          <ContainerProduct>
+            <ProductImageSlider images={product.images} />
+
+            <ContainerBuy>
+              Comprar {product.title}
+              <ProductPriceTag
+                isDefined={isDefined}
+                setIsDefined={setIsDefined}
+                handleCart={handleCart}
+                product={product}
+              />
+            </ContainerBuy>
+            <ContainerDisc>
+              <h1>SOBRE ESSE JOGO</h1>
+              <h2>{product.description}</h2>
+            </ContainerDisc>
+          </ContainerProduct>
+        </>
+      )}
+
+      <FooterMenu />
+    </>
+  );
 };
 export default ProductPage;

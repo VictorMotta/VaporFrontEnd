@@ -37,7 +37,7 @@ export default function SignUpPage() {
           alert("Erro ao cadastrar!");
         }
       })
-      .catch((err) => err.response.data.forEach((erro) => alert(erro)));
+      .catch((err) => alert(err.response.data));
   }
 
   function editForm(e) {

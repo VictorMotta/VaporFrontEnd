@@ -21,7 +21,7 @@ const SignInPage = () => {
         login(res.data);
       })
       .catch((err) => {
-        err.response.data.forEach((erro) => alert(erro));
+        alert(err.response.data);
       });
   };
 

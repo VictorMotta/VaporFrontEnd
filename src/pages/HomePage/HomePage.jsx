@@ -37,7 +37,9 @@ const HomePage = () => {
   };
   const handleScroll = (e) => {
     const scrollHeight = e.target.documentElement.scrollHeight;
-    const currentHeight = Math.ceil(e.target.documentElement.scrollTop + window.innerHeight);
+    const currentHeight = Math.ceil(
+      e.target.documentElement.scrollTop + window.innerHeight
+    );
     if (currentHeight + 1 >= scrollHeight) {
       loadFiveProducts();
     }
@@ -56,7 +58,7 @@ const HomePage = () => {
       const tenProducts = data;
       setProducts((products) => [...products, ...tenProducts]);
     });
-    currentOffset += 5;
+    currentOffset += 10;
   };
 
   return (
@@ -64,7 +66,7 @@ const HomePage = () => {
       <TopMenu>
         <InputSearchHomePage
           search={search}
-          type='text'
+          type="text"
           placeholder={"a"}
           value={search}
           onChange={(e) => {
@@ -77,7 +79,11 @@ const HomePage = () => {
           <Slider {...settings}>
             {promoItens.map((game, index) => (
               <ImageWrapper key={index} to={`/produto/${game._id}`}>
-                <Image className='slider-image' src={game.images[0]} alt={game.title} />
+                <Image
+                  className="slider-image"
+                  src={game.images[0]}
+                  alt={game.title}
+                />
                 <div>{game.title}</div>
                 <h2>{game.description}</h2>
                 <BannerPriceTag
@@ -91,7 +97,18 @@ const HomePage = () => {
         </CarrouselWrapper>
         <StyledTitleOferta>FEITO PARA VOCÊ</StyledTitleOferta>
         {products.map(
-          ({ title, category, price, images, promoPercentage, pricePromotion, _id }, index) => (
+          (
+            {
+              title,
+              category,
+              price,
+              images,
+              promoPercentage,
+              pricePromotion,
+              _id,
+            },
+            index
+          ) => (
             <ProducDisplay
               title={title}
               category={category}

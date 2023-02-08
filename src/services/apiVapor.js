@@ -25,7 +25,7 @@ function getProductsPromo() {
 }
 
 function getFiveProducts(currentOffset) {
-  return axios.get(`${BASE_URL}/products?offset=${currentOffset}&limit=5`);
+  return axios.get(`${BASE_URL}/products?offset=${currentOffset}&limit=10`);
 }
 
 export const apiVapor = {

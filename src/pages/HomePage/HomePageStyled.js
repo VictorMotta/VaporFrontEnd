@@ -97,10 +97,15 @@ export const InputSearchHomePage = styled.input`
 `;
 
 export const HomePageContainer = styled.div`
-  padding-top: 89px;
-  padding-bottom: 60px;
+  padding-top: 90px;
+  padding-bottom: 90px;
   background-color: #15212f;
   min-height: 100vh;
+  max-height: 100vh;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const StyledTitleOferta = styled.h1`

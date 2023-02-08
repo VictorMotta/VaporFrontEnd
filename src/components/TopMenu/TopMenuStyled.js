@@ -28,4 +28,5 @@ export const TopUserContainer = styled.div`
   height: 76px;
   background: #202126;
   box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.5);
+  top: 0;
 `;

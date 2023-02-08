@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -36,10 +36,8 @@ const HomePage = () => {
     afterChange: (current) => setCurrentSlide(current),
   };
   const handleScroll = (e) => {
-    const scrollHeight = e.target.documentElement.scrollHeight;
-    const currentHeight = Math.ceil(
-      e.target.documentElement.scrollTop + window.innerHeight
-    );
+    const scrollHeight = e.target.scrollHeight;
+    const currentHeight = Math.ceil(e.target.scrollTop + window.innerHeight);
     if (currentHeight + 1 >= scrollHeight) {
       loadFiveProducts();
     }
@@ -47,7 +45,8 @@ const HomePage = () => {
 
   useEffect(() => {
     loadFiveProducts();
-    window.addEventListener("scroll", handleScroll);
+    const element = ref.current;
+    element.addEventListener("scroll", handleScroll);
     apiVapor.getProductsPromo().then(({ data }) => {
       setPromoItens([...data].sort(() => Math.random() - 0.5).splice(0, 4));
     });
@@ -61,20 +60,21 @@ const HomePage = () => {
     currentOffset += 10;
   };
 
+  const ref = useRef(null);
   return (
     <>
-      <TopMenu>
-        <InputSearchHomePage
-          search={search}
-          type="text"
-          placeholder={"a"}
-          value={search}
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }}
-        />
-      </TopMenu>
-      <HomePageContainer>
+      <HomePageContainer ref={ref}>
+        <TopMenu>
+          <InputSearchHomePage
+            search={search}
+            type="text"
+            placeholder={"a"}
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
+        </TopMenu>
         <CarrouselWrapper>
           <Slider {...settings}>
             {promoItens.map((game, index) => (

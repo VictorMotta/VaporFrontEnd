@@ -1,74 +1,49 @@
-# Design utilizado:
+# Projeto Front-End da Loja Virtual de Jogos
+
+Este é o repositório do projeto front-end da nossa loja virtual de jogos inspirada na Steam. Trabalhamos em equipe utilizando o Git como sistema de controle de versão. Aqui estão algumas das principais features e tecnologias utilizadas no desenvolvimento:
+
+## Design desenvolvido pela equipe seguindo como base a Steam:
 
 https://www.figma.com/file/nlzCzIeHghTnJA6xjlyGL1/Layout-vapor?node-id=0%3A1&t=6gZ1F7vrX6nUDkkc-1
 
-# Introdução ao Create React App
+## Features
 
-Este projeto foi inicializado com [Create React App](https://github.com/facebook/create-react-app).
+1. **Página Principal com Rolagem Infinita:** A página principal da loja apresenta uma rolagem infinita de itens, permitindo que os usuários naveguem pelos jogos disponíveis de forma contínua e intuitiva.
 
-## Scripts disponíveis
+2. **Carrossel de Promoções:** Implementamos um carrossel que exibe 4 itens aleatórios em promoção na página principal. Isso ajuda a destacar os jogos com desconto e atrair a atenção dos usuários.
 
-No diretório do projeto, você pode executar:
+3. **Página de Produto:** Cada jogo possui uma página de produto dedicada, que exibe informações detalhadas sobre o jogo, incluindo imagens, descrição, requisitos do sistema e outros detalhes relevantes.
 
-### `npm start`
+4. **Carrinho de Compras:** Implementamos uma funcionalidade de carrinho de compras, onde os usuários podem adicionar jogos ao carrinho e finalizar a compra posteriormente. Os produtos do carrinho são armazenados no localStorage do navegador, permitindo que os usuários continuem suas compras em diferentes sessões.
 
-Executa o aplicativo no modo de desenvolvimento.\
-Abra [http://localhost:3000](http://localhost:3000) para visualizá-lo em seu navegador.
+5. **Página de Pagamento Teórico:** Implementamos uma página de pagamento teórico, que é responsável por armazenar as informações da compra. Neste momento, a funcionalidade de pagamento real não foi desenvolvida, mas essa página é uma base para futuras implementações.
 
-A página será recarregada quando você fizer alterações.\
-Você também pode ver erros de lint no console.
+## Tecnologias Utilizadas
 
-### `teste npm`
+- **Framework React.js:** O desenvolvimento do front-end foi realizado utilizando o React.js como base. Utilizamos conceitos importantes como Context API para o gerenciamento de estado, React Router para a criação de rotas, requisições Axios para interagir com o banco de dados e a biblioteca Styled-components para estilização dos componentes.
 
-Inicia o executor de teste no modo de observação interativo.\
-Consulte a seção sobre [execução de testes](https://facebook.github.io/create-react-app/docs/running-tests) para obter mais informações.
+- **Node.js:** Utilizamos o Node.js para o desenvolvimento do back-end. Ele nos proporciona uma plataforma flexível para criar aplicações web escaláveis e eficientes.
 
-### `npm run build`
+- **Boas Práticas de Back-End:** Seguimos as boas práticas de desenvolvimento em camadas, utilizando middlewares para a manipulação das requisições, organizando as rotas de forma modular e aplicando conceitos de segurança.
 
-Cria o aplicativo para produção na pasta `build`.\
-Ele empacota corretamente o React no modo de produção e otimiza a compilação para obter o melhor desempenho.
+- **Dotenv:** Utilizamos o Dotenv para proteger informações sensíveis, como chaves de API ou credenciais de acesso ao banco de dados. Ele nos permite armazenar essas informações em variáveis de ambiente, tornando-as mais seguras.
 
-A compilação é minificada e os nomes dos arquivos incluem os hashes.\
-Seu aplicativo está pronto para ser implantado!
+- **MongoDB:** Utilizamos o MongoDB como banco de dados para nossa aplicação. Ele é um banco de dados NoSQL flexível e escalável, adequado para armazenar informações relacionadas aos jogos, usuários e outras entidades do sistema.
 
-Consulte a seção sobre [implantação](https://facebook.github.io/create-react-app/docs/deployment) para obter mais informações.
+## Como Inicializar o Projeto
 
-### `npm run eject`
+Caso você precise abrir o projeto em sua máquina, siga as etapas abaixo:
 
-**Nota: esta é uma operação unidirecional. Depois de 'ejetar', você não pode voltar!**
+1. Certifique-se de ter o Node.js instalado em sua máquina. Você pode fazer o download da versão mais recente do Node.js em: [https://nodejs.org](https://nodejs.org)
 
-Se você não estiver satisfeito com a ferramenta de construção e opções de configuração, você pode `ejetar` a qualquer momento. Este comando removerá a dependência de compilação única do seu projeto.
+2. Faça o clone deste repositório para o diretório de sua preferência em sua máquina.
 
-Em vez disso, ele copiará todos os arquivos de configuração e as dependências transitivas (webpack, Babel, ESLint, etc) diretamente para o seu projeto, para que você tenha controle total sobre eles. Todos os comandos, exceto `eject`, ainda funcionarão, mas apontarão para os scripts copiados para que você possa ajustá-los. Neste ponto você está por conta própria.
+3. Abra o terminal ou prompt de comando e navegue até o diretório do projeto.
 
-Você nunca precisa usar `eject`. O conjunto de recursos selecionados é adequado para implantações pequenas e médias, e você não deve se sentir obrigado a usar esse recurso. No entanto, entendemos que esta ferramenta não seria útil se você não pudesse personalizá-la quando estivesse pronto para ela.
+4. No diretório raiz do projeto, execute o comando `npm install` para instalar todas as dependências necessárias.
 
-## Saber mais
+5. Após a conclusão da instalação, execute o comando `npm start` para iniciar o servidor de desenvolvimento.
 
-Você pode aprender mais na [documentação do Create React App](https://facebook.github.io/create-react-app/docs/getting-started).
+6. O projeto será executado em seu navegador padrão no endereço `http://localhost:3000`.
 
-Para aprender React, confira a [documentação do React](https://reactjs.org/).
-
-### Divisão de código
-
-Esta seção foi movida para cá: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code- divisão)
-
-### Analisando o tamanho do pacote
-
-Esta seção foi movida para cá: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/ docs/analisando-o-tamanho-do-pacote)
-
-### Criando um Progressive Web App
-
-Esta seção foi movida para cá: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react- app/docs/making-a-progressive-web-app)
-
-### Configuração avançada
-
-Esta seção foi movida para cá: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced- configuração)
-
-### Implantação
-
-Esta seção foi movida para cá: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` falha ao minificar
-
-Esta seção foi movida para cá: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/ create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Agora você pode explorar o projeto localmente e fazer quaisquer modificações ou melhorias necessárias. Se tiver alguma dúvida ou sugestão, por favor, entre em contato com a equipe. Agradecemos o seu interesse em nosso projeto!

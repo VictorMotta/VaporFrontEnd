@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import logo from "../../assets/images/Logo.png";
-import svgIcon from "../../assets/images/download.svg";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import logo from '../../assets/images/Logo.png';
+import svgIcon from '../../assets/images/download.svg';
+import { Link } from 'react-router-dom';
 
 export const CarrouselWrapper = styled.div`
   width: 94.5%;
@@ -35,7 +35,7 @@ export const ImageWrapper = styled(Link)`
     padding-left: 5px;
     padding-right: 5px;
     margin-top: 7px;
-    font-family: "Roboto Condensed";
+    font-family: 'Roboto Condensed';
     font-style: normal;
     font-weight: 500;
     font-size: 15px;
@@ -84,14 +84,14 @@ export const InputSearchHomePage = styled.input`
   font-weight: 700;
   color: #949599;
   padding-left: 8px;
-  background-image: url(${(props) => (props.search ? "none" : svgIcon)});
+  background-image: url(${(props) => (props.search ? 'none' : svgIcon)});
   background-repeat: no-repeat;
   background-position: right;
   background-size: 1.9em;
   ::placeholder {
     content: url(${logo});
     display: flex;
-    height: 30px;
+    height: 20px;
     justify-content: center;
   }
 `;
@@ -109,7 +109,7 @@ export const HomePageContainer = styled.div`
 `;
 
 export const StyledTitleOferta = styled.h1`
-  font-family: "Roboto Condensed";
+  font-family: 'Roboto Condensed';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
